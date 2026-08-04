@@ -1,0 +1,14 @@
+{
+  "name": "landing-kgroup",
+  "version": "1.0.0",
+  "description": "Landing page de captación KGroup",
+  "main": "server.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

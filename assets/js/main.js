@@ -4,13 +4,13 @@
    ========================================================= */
 const CONTACT = {
   // Número de WhatsApp en formato internacional, solo dígitos (sin +, espacios ni guiones)
-  whatsapp: '573000000000',
+  whatsapp: '573148316310',
   // Texto que se precarga al abrir WhatsApp
   whatsappMsg: 'Hola KGroup 👋 Quiero cotizar un proyecto de software.',
   // Correo comercial
   email: 'hola@kgroup.co',
   // Teléfono visible en el footer
-  phoneDisplay: '+57 300 000 0000',
+  phoneDisplay: '+57 314 831 6310',
 
   // Endpoint opcional para recibir los leads (Formspree, Getform, tu API, un webhook de n8n…).
   // Si lo dejas vacío, el formulario abre WhatsApp con los datos precargados.
