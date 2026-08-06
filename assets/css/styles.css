@@ -727,6 +727,60 @@ button{font:inherit;cursor:pointer}
   padding: 34px;
 }
 
+/* Contenedor del Formulario Transparente con Logo al Fondo */
+.contact__form-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  margin-top: 20px;
+}
+
+.contact__bg-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.22;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+.contact__bg-logo .mark {
+  width: 380px;
+  height: auto;
+  filter: drop-shadow(0 0 60px rgba(108, 79, 246, 0.75));
+}
+@media (max-width: 600px) {
+  .contact__bg-logo .mark {
+    width: 260px;
+  }
+}
+
+.contact__formwrap--glass {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 36px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+
+.contact__formwrap--glass .field input,
+.contact__formwrap--glass .field textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+.contact__formwrap--glass .field input:focus,
+.contact__formwrap--glass .field textarea:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(167, 150, 255, 0.6);
+  box-shadow: 0 0 20px rgba(108, 79, 246, 0.3);
+}
+
 /* Toast Notification Flotante */
 .toast {
   position: fixed;

@@ -55,8 +55,9 @@ function initNav() {
   const burger = $('#navBurger');
 
   const onScroll = () => {
-    nav.classList.toggle('is-stuck', window.scrollY > 24);
-    $('#fabWa')?.classList.toggle('is-visible', window.scrollY > 600);
+    const isStuck = window.scrollY > 24;
+    nav.classList.toggle('is-stuck', isStuck);
+    $('#fabWa')?.classList.toggle('is-visible', isStuck);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -249,16 +250,8 @@ function initForm() {
           statusEl.textContent = '';
         }
 
-        // Muestra el anuncio flotante de éxito
+        // Muestra la notificación flotante Toast de éxito
         showToast('¡Listo! Recibimos tu solicitud, nos pondremos en contacto contigo en menos de 24 horas.');
-
-        // Pliega automáticamente el formulario
-        setTimeout(() => {
-          if (formContainer) {
-            formContainer.classList.remove('is-expanded');
-            toggleBtn?.setAttribute('aria-expanded', 'false');
-          }
-        }, 700);
       } catch (err) {
         if (statusEl) {
           statusEl.textContent = 'No pudimos enviar el correo. Por favor escríbenos directamente por WhatsApp.';
