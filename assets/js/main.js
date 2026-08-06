@@ -8,7 +8,7 @@ const CONTACT = {
   // Texto que se precarga al abrir WhatsApp
   whatsappMsg: 'Hola KGroup 👋 Quiero cotizar un proyecto de software.',
   // Correo comercial
-  email: 'hola@kgroup.co',
+  email: 'kgroupmed@gmail.com',
   // Teléfono visible en el footer
   phoneDisplay: '+57 314 831 6310',
 
@@ -236,13 +236,11 @@ function initForm() {
 
     // 2) Sin endpoint: abrimos WhatsApp con el resumen del lead.
     const msg =
-      `Hola KGroup 👋 Quiero cotizar un proyecto.\n\n` +
+      `Hola KGroup 👋 Quiero información sobre un proyecto.\n\n` +
       `• Nombre: ${data.nombre}\n` +
       `• Empresa: ${data.empresa || '—'}\n` +
       `• Correo: ${data.email}\n` +
       `• WhatsApp: ${data.telefono}\n` +
-      `• Necesito: ${data.servicio}\n` +
-      `• Presupuesto: ${data.presupuesto || 'Por definir'}\n` +
       `• Proyecto: ${data.mensaje || '—'}`;
 
     window.open(waUrl(msg), '_blank', 'noopener');

@@ -788,6 +788,8 @@ button{font:inherit;cursor:pointer}
   .section{padding:76px 0}
   .container{padding-inline:20px}
   .cards,.portfolio,.quotes,.steps{grid-template-columns:1fr}
+  .hall-cards-grid, .hall-divide-grid, .hall-results__inner, .hall-results__grid {grid-template-columns:1fr!important; gap:24px!important}
+  .hall-divide-item {padding-left:16px!important}
   .form__row{grid-template-columns:1fr}
   .footer__inner{grid-template-columns:1fr;gap:34px}
   .contact__formwrap{padding:24px}
@@ -796,4 +798,182 @@ button{font:inherit;cursor:pointer}
   .fab__label{display:none}
   .fab{padding:16px;border-radius:50%}
   .footer__bottom{flex-direction:column;gap:8px}
+}
+
+/* ---------------------------------------------------------
+   Estilo Minimalista Inspirado en Halltec.co
+   --------------------------------------------------------- */
+.section--curved-top {
+  border-radius: 3.5rem 3.5rem 0 0;
+  margin-top: -3.5rem;
+  position: relative;
+  z-index: 10;
+  background: var(--gray-50);
+  padding-top: 84px;
+}
+@media (max-width: 768px) {
+  .section--curved-top {
+    border-radius: 2.2rem 2.2rem 0 0;
+    margin-top: -2.2rem;
+  }
+}
+
+.hall-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 54px;
+}
+
+.hall-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  padding: 24px 26px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.hall-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(108, 79, 246, 0.15);
+  border-color: rgba(108, 79, 246, 0.4);
+}
+.hall-card__icon {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.hall-card__icon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.hall-card__icon--purple { background: linear-gradient(135deg, #6C4FF6, #362A7E); }
+.hall-card__icon--teal { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+.hall-card__icon--violet { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+
+.hall-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+.hall-card p {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.hall-divide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #e2e8f0;
+}
+.hall-divide-item {
+  padding-left: 24px;
+  border-left: 3px solid #cbd5e1;
+  transition: border-color 0.3s ease;
+}
+.hall-divide-item:hover {
+  border-left-color: var(--violet);
+}
+.hall-divide-item h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+.hall-divide-item p {
+  font-size: 0.92rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.hall-results {
+  background: linear-gradient(165deg, #0b0a16 0%, #1a1240 50%, #100c2b 100%);
+  color: #ffffff;
+  padding: 96px 0;
+  position: relative;
+}
+.hall-results__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+.hall-results__accent-title {
+  position: relative;
+  padding-left: 22px;
+}
+.hall-results__accent-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  background: var(--violet);
+  border-radius: 4px;
+}
+.hall-results__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  text-align: center;
+}
+.hall-results__num {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.hall-results__num-label {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+.social-pills {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.social-pill {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.social-pill:hover {
+  background: var(--violet);
+  border-color: var(--violet);
+  transform: translateY(-3px);
+}
+.social-pill svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
