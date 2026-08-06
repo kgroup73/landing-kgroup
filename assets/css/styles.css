@@ -320,24 +320,83 @@ button{font:inherit;cursor:pointer}
 /* ---------------------------------------------------------
    Clientes / marquee
    --------------------------------------------------------- */
-.clients{background:var(--indigo-950);padding:34px 0 42px;color:#fff}
-.clients__label{
-  text-align:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(255,255,255,.42);margin-bottom:22px;
+.clients {
+  background: var(--indigo-950);
+  padding: 54px 0 64px;
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.marquee{
-  overflow:hidden;
-  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+.clients__header {
+  text-align: center;
+  margin-bottom: 36px;
 }
-.marquee__track{display:flex;gap:56px;width:max-content;animation:scroll 34s linear infinite}
-.marquee__track span{
-  font-family:var(--font-display);font-weight:600;font-size:1.15rem;
-  color:rgba(255,255,255,.38);white-space:nowrap;transition:color .3s var(--ease);
+.clients__label {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
-.marquee:hover .marquee__track{animation-play-state:paused}
-.marquee__track span:hover{color:#fff}
-@keyframes scroll{to{transform:translateX(-50%)}}
+.clients__sublabel {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  padding: 12px 0;
+}
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: max-content;
+  animation: scroll-logos 28s linear infinite;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+.client-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 84px;
+  min-width: 185px;
+  padding: 14px 28px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.client-logo--dark {
+  background: #0b0f19;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.client-logo:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 10px 28px rgba(108, 79, 246, 0.45);
+}
+.client-logo--dark:hover {
+  border-color: rgba(108, 79, 246, 0.6);
+}
+.client-logo img {
+  max-height: 58px;
+  max-width: 175px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333333%); }
+}
 
 /* ---------------------------------------------------------
    Secciones genéricas
