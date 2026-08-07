@@ -679,7 +679,7 @@ button{font:inherit;cursor:pointer}
   font-size:.92rem;font-weight:500;transition:all .25s var(--ease);
 }
 .contact__chip:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
-.contact__chip svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.contact__chip svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;overflow:visible;flex-shrink:0}
 
 .contact__formwrap{
   background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);
