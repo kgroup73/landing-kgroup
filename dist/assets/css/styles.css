@@ -50,7 +50,7 @@ body{
   font-size:16.5px;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 
 img,svg{max-width:100%}
@@ -962,15 +962,17 @@ button{font:inherit;cursor:pointer}
    FAB WhatsApp
    --------------------------------------------------------- */
 .fab{
-  position:fixed;right:18px;bottom:18px;z-index:99999 !important;
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 16px;border-radius:999px;
-  background:#25D366;color:#fff;font-weight:600;font-size:.84rem;
-  box-shadow:0 10px 24px -6px rgba(37,211,102,.65);
-  transform:translateY(120px);opacity:0;
-  transition:transform .45s var(--ease), opacity .35s var(--ease), box-shadow .3s var(--ease);
+  position:fixed !important;right:18px !important;bottom:18px !important;z-index:2147483647 !important;
+  will-change:transform, opacity !important;isolation:isolate !important;
+  display:inline-flex !important;align-items:center !important;gap:8px !important;
+  padding:10px 16px !important;border-radius:999px !important;
+  background:#25D366 !important;color:#fff !important;font-weight:600 !important;font-size:.84rem !important;
+  box-shadow:0 10px 24px -6px rgba(37,211,102,.65) !important;
+  opacity:0 !important;transform:translateY(120px) !important;pointer-events:none !important;
+  transition:transform .45s var(--ease), opacity .35s var(--ease), box-shadow .3s var(--ease) !important;
 }
-.fab.is-visible{transform:translateY(0) !important;opacity:1 !important}
+.fab.is-visible{opacity:1 !important;transform:translateY(0) !important;pointer-events:auto !important}
+.fab.is-visible:hover{transform:translateY(-3px) !important;box-shadow:0 14px 30px -8px rgba(37,211,102,.85) !important}
 .fab:hover{transform:translateY(-3px);box-shadow:0 14px 30px -8px rgba(37,211,102,.85)}
 .fab svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;overflow:visible;flex-shrink:0}
 
@@ -1049,7 +1051,7 @@ button{font:inherit;cursor:pointer}
   border-radius: 3.5rem 3.5rem 0 0;
   margin-top: -3.5rem;
   position: relative;
-  z-index: 10;
+  z-index: 1;
   background: var(--gray-50);
   padding-top: 84px;
   padding-bottom: 96px;
