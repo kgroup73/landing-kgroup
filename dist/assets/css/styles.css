@@ -407,10 +407,12 @@ button{font:inherit;cursor:pointer}
   z-index: 11;
   pointer-events: none;
 }
-.client-logo[data-tooltip]:hover::before {
+.client-logo[data-tooltip]:hover::before,
+.client-logo[data-tooltip]:active::before {
   opacity: 1;
 }
-.client-logo[data-tooltip]:hover::after {
+.client-logo[data-tooltip]:hover::after,
+.client-logo[data-tooltip]:active::after {
   opacity: 1;
   transform: translateY(0);
 }
