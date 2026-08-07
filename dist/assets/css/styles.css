@@ -686,6 +686,206 @@ button{font:inherit;cursor:pointer}
   border-radius:var(--radius-lg);padding:34px;backdrop-filter:blur(16px);
   box-shadow:var(--shadow-lg);
 }
+
+/* Logo Interactivo & Formulario Desplegable Animado */
+.contact__logo-btn {
+  background: transparent;
+  border: 0;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  outline: none;
+  transition: transform 0.4s var(--ease);
+}
+.contact__logo-btn .mark {
+  width: 190px;
+  height: auto;
+  opacity: 0.35;
+  filter: drop-shadow(0 0 25px rgba(108,79,246,0.5));
+  transition: opacity 0.4s var(--ease), filter 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.contact__logo-btn:hover .mark {
+  opacity: 1;
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 45px rgba(108,79,246,0.95));
+}
+.logo-btn__hint {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--violet-300);
+  background: rgba(108, 79, 246, 0.15);
+  border: 1px solid rgba(167, 150, 255, 0.3);
+  padding: 6px 18px;
+  border-radius: 9999px;
+  opacity: 0.88;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+.contact__logo-btn:hover .logo-btn__hint {
+  opacity: 1;
+  transform: translateY(-3px);
+  background: rgba(108, 79, 246, 0.3);
+}
+
+.contact__formwrap--animated {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: scale(0.92) translateY(30px);
+  pointer-events: none;
+  transition: max-height 0.6s var(--ease), opacity 0.5s var(--ease), transform 0.5s var(--ease), margin-top 0.5s var(--ease), padding 0.5s var(--ease);
+  margin-top: 0;
+  padding: 0 34px;
+  width: 100%;
+  max-width: 680px;
+  text-align: left;
+}
+
+.contact__formwrap--animated.is-expanded {
+  opacity: 1;
+  max-height: 800px;
+  transform: scale(1) translateY(0);
+  pointer-events: all;
+  margin-top: 36px;
+  padding: 34px;
+}
+
+/* Contenedor del Formulario Transparente con Logo al Fondo */
+.contact__form-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  margin-top: 20px;
+}
+
+.contact__bg-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.22;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+.contact__bg-logo .mark {
+  width: 380px;
+  height: auto;
+  filter: drop-shadow(0 0 60px rgba(108, 79, 246, 0.75));
+}
+@media (max-width: 600px) {
+  .contact__bg-logo .mark {
+    width: 260px;
+  }
+}
+
+.contact__formwrap--glass {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 36px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+@media (max-width: 600px) {
+  .contact__formwrap--glass {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+}
+
+.contact__formwrap--glass .field input,
+.contact__formwrap--glass .field textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+.contact__formwrap--glass .field input:focus,
+.contact__formwrap--glass .field textarea:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(167, 150, 255, 0.6);
+  box-shadow: 0 0 20px rgba(108, 79, 246, 0.3);
+}
+
+/* Toast Notification Flotante */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  background: #0F0E26;
+  border: 1px solid rgba(167, 150, 255, 0.4);
+  color: #ffffff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(108, 79, 246, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 440px;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(16px);
+}
+.toast.is-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+.toast__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #059669);
+  display: grid;
+  place-items: center;
+  flex: none;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+.toast__icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #ffffff;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.toast__text {
+  font-size: 0.93rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #f1f5f9;
+}
+.toast__close {
+  background: transparent;
+  border: 0;
+  color: #94a3b8;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+.toast__close:hover {
+  color: #ffffff;
+}
+@media (max-width: 600px) {
+  .toast {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: none;
+  }
+}
 .form{display:flex;flex-direction:column;gap:16px}
 .form__row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field{display:flex;flex-direction:column;gap:7px}
@@ -836,11 +1036,13 @@ button{font:inherit;cursor:pointer}
   z-index: 10;
   background: var(--gray-50);
   padding-top: 84px;
+  padding-bottom: 96px;
 }
 @media (max-width: 768px) {
   .section--curved-top {
     border-radius: 2.2rem 2.2rem 0 0;
     margin-top: -2.2rem;
+    padding-bottom: 64px;
   }
 }
 
@@ -848,7 +1050,10 @@ button{font:inherit;cursor:pointer}
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-bottom: 54px;
+  margin-bottom: 28px;
+}
+.hall-cards-grid:last-child {
+  margin-bottom: 0;
 }
 
 .hall-card {
@@ -890,6 +1095,10 @@ button{font:inherit;cursor:pointer}
 .hall-card__icon--purple { background: linear-gradient(135deg, #6C4FF6, #362A7E); }
 .hall-card__icon--teal { background: linear-gradient(135deg, #06b6d4, #0891b2); }
 .hall-card__icon--violet { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+.hall-card__icon--emerald { background: linear-gradient(135deg, #10b981, #059669); }
+.hall-card__icon--amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.hall-card__icon--rose { background: linear-gradient(135deg, #f43f5e, #be123c); }
+.hall-card__icon--blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
 
 .hall-card h3 {
   font-size: 1.3rem;

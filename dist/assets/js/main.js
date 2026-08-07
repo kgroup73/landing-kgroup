@@ -12,10 +12,8 @@ const CONTACT = {
   // Teléfono visible en el footer
   phoneDisplay: '+57 314 831 6310',
 
-  // Endpoint opcional para recibir los leads (Formspree, Getform, tu API, un webhook de n8n…).
-  // Si lo dejas vacío, el formulario abre WhatsApp con los datos precargados.
-  // Ejemplo: 'https://formspree.io/f/xxxxxxx'
-  endpoint: ''
+  // Endpoint para enviar correos vía Resend API
+  endpoint: '/api/contacto'
 };
 
 /* ========================================================= */
@@ -57,8 +55,9 @@ function initNav() {
   const burger = $('#navBurger');
 
   const onScroll = () => {
-    nav.classList.toggle('is-stuck', window.scrollY > 24);
-    $('#fabWa')?.classList.toggle('is-visible', window.scrollY > 600);
+    const isStuck = window.scrollY > 24;
+    nav.classList.toggle('is-stuck', isStuck);
+    $('#fabWa')?.classList.toggle('is-visible', isStuck);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -160,6 +159,21 @@ function initForm() {
   if (!form) return;
   const status = $('#formStatus');
 
+  const toggleBtn = $('#toggleFormBtn');
+  const formContainer = $('#formContainer');
+  if (toggleBtn && formContainer) {
+    toggleBtn.addEventListener('click', () => {
+      const expanded = formContainer.classList.toggle('is-expanded');
+      toggleBtn.setAttribute('aria-expanded', String(expanded));
+      if (expanded) {
+        setTimeout(() => {
+          formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          formContainer.querySelector('input[name="nombre"]')?.focus();
+        }, 300);
+      }
+    });
+  }
+
   const setError = (field, msg) => {
     field.classList.add('has-error');
     if (!field.querySelector('.field__error')) {
@@ -176,11 +190,17 @@ function initForm() {
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    status.textContent = '';
-    status.className = 'form__status';
+    const statusEl = $('#formStatus', form) || $('#formStatus');
+    if (statusEl) {
+      statusEl.textContent = '';
+      statusEl.className = 'form__status';
+    }
 
     // Honeypot: si un bot lo llena, fingimos éxito y no enviamos nada.
-    if (form.website.value) { status.textContent = '¡Gracias! Te contactamos pronto.'; return; }
+    if (form.website.value) {
+      if (statusEl) statusEl.textContent = '¡Gracias! Te contactamos pronto.';
+      return;
+    }
 
     // Validación
     let ok = true;
@@ -198,9 +218,11 @@ function initForm() {
     });
 
     if (!ok) {
-      status.textContent = 'Revisa los campos marcados.';
-      status.classList.add('is-error');
-      form.querySelector('.has-error input, .has-error select')?.focus();
+      if (statusEl) {
+        statusEl.textContent = 'Por favor revisa los campos marcados.';
+        statusEl.classList.add('is-error');
+      }
+      form.querySelector('.has-error input, .has-error textarea')?.focus();
       return;
     }
 
@@ -210,9 +232,9 @@ function initForm() {
     const btn = form.querySelector('button[type="submit"]');
     const original = btn.innerHTML;
     btn.disabled = true;
-    btn.textContent = 'Enviando…';
+    btn.textContent = 'Enviando mensaje…';
 
-    // 1) Si hay endpoint configurado, se envía ahí.
+    // 1) Si hay endpoint configurado (Resend API), se envía ahí.
     if (CONTACT.endpoint) {
       try {
         const res = await fetch(CONTACT.endpoint, {
@@ -220,13 +242,21 @@ function initForm() {
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify(data)
         });
-        if (!res.ok) throw new Error('Respuesta ' + res.status);
+        const resJson = await res.json().catch(() => ({}));
+        if (!res.ok || !resJson.ok) throw new Error(resJson.error || 'Respuesta ' + res.status);
+        
         form.reset();
-        status.textContent = '¡Listo! Recibimos tu solicitud, te escribimos en menos de 24 horas.';
-        status.classList.add('is-ok');
+        if (statusEl) {
+          statusEl.textContent = '';
+        }
+
+        // Muestra la notificación flotante Toast de éxito
+        showToast('¡Listo! Recibimos tu solicitud, nos pondremos en contacto contigo en menos de 24 horas.');
       } catch (err) {
-        status.textContent = 'No pudimos enviar el formulario. Escríbenos por WhatsApp y lo resolvemos.';
-        status.classList.add('is-error');
+        if (statusEl) {
+          statusEl.textContent = 'No pudimos enviar el correo. Por favor escríbenos directamente por WhatsApp.';
+          statusEl.classList.add('is-error');
+        }
       } finally {
         btn.disabled = false;
         btn.innerHTML = original;
@@ -254,6 +284,27 @@ function initForm() {
   $$('input, select, textarea', form).forEach(el =>
     el.addEventListener('input', () => clearError(el.closest('.field') || document.createElement('div')))
   );
+}
+
+/* ---------- Notificación Toast Flotante ---------- */
+let toastTimer = null;
+function showToast(msg) {
+  const toast = $('#toastNotice');
+  const toastMsg = $('#toastMessage');
+  const toastClose = $('#toastClose');
+  if (!toast || !toastMsg) return;
+
+  toastMsg.textContent = msg;
+  toast.classList.add('is-show');
+
+  if (toastClose) {
+    toastClose.onclick = () => toast.classList.remove('is-show');
+  }
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('is-show');
+  }, 6500);
 }
 
 /* ---------- Init ---------- */
