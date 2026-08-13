@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import ContactForm from "../components/ContactForm.astro";
+import { Image } from "astro:assets";
+import UnalLogo from "../assets/img/universidad-nacional.png";
 ---
 
 <BaseLayout>
@@ -157,10 +159,9 @@ import ContactForm from "../components/ContactForm.astro";
                             title="Universidad Nacional de Colombia"
                             data-tooltip="Universidad Nacional de Colombia"
                         >
-                            <img
-                                src="/src/assets/img/universidad-nacional.png"
+                            <Image
                                 alt="Universidad Nacional de Colombia"
-                                loading="lazy"
+                                src={UnalLogo}
                             />
                         </div>
                         <div
