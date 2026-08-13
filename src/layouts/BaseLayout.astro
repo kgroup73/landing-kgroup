@@ -1,0 +1,264 @@
+---
+import "../assets/css/styles.css";
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>KGroup — Software a la medida que hace crecer tu negocio</title>
+        <meta
+            name="description"
+            content="Diseño y desarrollo de software a la medida, plataformas web, apps móviles, e-commerce, integraciones y automatización con IA."
+        />
+        <meta name="theme-color" content="#362A7E" />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="KGroup — Software a la medida que hace crecer tu negocio"
+        />
+        <meta
+            property="og:description"
+            content="Diseñamos, construimos y mantenemos el software que tu operación necesita. Propuesta y estimado sin costo."
+        />
+        <meta property="og:image" content="/src/assets/img/kgroup-black.png" />
+
+        <link
+            rel="icon"
+            href="/src/assets/img/kgroup-black.svg"
+            type="image/svg+xml"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Saltar al contenido</a>
+
+        <!-- Botón flotante WhatsApp -->
+        <a
+            class="fab"
+            id="fabWa"
+            href="https://wa.me/573148316310"
+            target="_blank"
+            rel="noopener"
+            aria-label="Escríbenos por WhatsApp"
+        >
+            <svg viewBox="-1 -1 26 26" aria-hidden="true">
+                <path
+                    d="M20.5 3.5A11 11 0 0 0 3.2 17.1L2 22l5-1.3A11 11 0 1 0 20.5 3.5z"
+                ></path>
+            </svg>
+            <span class="fab__label">¿Hablamos?</span>
+        </a>
+
+        <!-- ============ NAV HEADER ============ -->
+        <header class="nav" id="nav">
+            <div class="container nav__inner">
+                <a class="nav__brand" href="#top" aria-label="KGroup — inicio">
+                    <svg
+                        class="mark"
+                        viewBox="534 609 1085 776"
+                        aria-hidden="true"
+                    >
+                        <path
+                            class="mark__body"
+                            d="M1608.969,1068.419l-313.066,306.59l-0.017,-0.017l-190.126,0.017l-294.071,-306.668l0,0.291l-90.944,0l0,244.378l-58.093,61.748l-105.651,0l0,-672.737l58.88,-76.78l104.864,0l0,306.126l90.944,0l0,0.291l294.071,-306.668l189.183,-0l109.56,107.672l-70.987,63.358l-104.35,-103.69l-306.762,307.669l287.391,288.545l216.22,-220.209l-42.099,-41.747l-40.431,41.874l-24.878,0.06l0.023,-0.023l-138.72,0.008l-0.015,0.015l-19.503,-0.036l95.087,-95.903l0,-0.027l37.594,-38.105l179.755,-0l66.006,65.548l70.136,68.419Z"
+                        ></path>
+                        <path
+                            class="mark__dot"
+                            d="M1082.986,947.544l52.456,52.456l-52.456,52.456l-52.456,-52.456l52.456,-52.456Z"
+                        ></path>
+                        <path
+                            class="mark__dot"
+                            d="M810.748,969.531l-90.277,-0l0,60.938l90.277,0l0,-60.938Z"
+                        ></path>
+                    </svg>
+                    <span class="nav__wordmark">KGroup</span>
+                </a>
+
+                <nav
+                    class="nav__links"
+                    id="navLinks"
+                    aria-label="Navegación principal"
+                >
+                    <a href="#top">Inicio</a>
+                    <a href="#servicios">Servicios</a>
+                    <a
+                        class="btn btn--primary btn--sm nav__cta"
+                        href="#contacto">Contáctanos</a
+                    >
+                </nav>
+
+                <button
+                    class="nav__burger"
+                    id="navBurger"
+                    aria-label="Abrir menú"
+                    aria-expanded="false"
+                    aria-controls="navLinks"
+                >
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+        <slot />
+        <!-- ============ FOOTER (HALLTEC STYLE MINIMALIST) ============ -->
+        <footer class="footer">
+            <div class="container footer__inner">
+                <div class="footer__brand">
+                    <a
+                        class="nav__brand"
+                        href="#top"
+                        aria-label="KGroup — inicio"
+                    >
+                        <svg
+                            class="mark"
+                            viewBox="534 609 1085 776"
+                            aria-hidden="true"
+                        >
+                            <path
+                                class="mark__body"
+                                d="M1608.969,1068.419l-313.066,306.59l-0.017,-0.017l-190.126,0.017l-294.071,-306.668l0,0.291l-90.944,0l0,244.378l-58.093,61.748l-105.651,0l0,-672.737l58.88,-76.78l104.864,0l0,306.126l90.944,0l0,0.291l294.071,-306.668l189.183,-0l109.56,107.672l-70.987,63.358l-104.35,-103.69l-306.762,307.669l287.391,288.545l216.22,-220.209l-42.099,-41.747l-40.431,41.874l-24.878,0.06l0.023,-0.023l-138.72,0.008l-0.015,0.015l-19.503,-0.036l95.087,-95.903l0,-0.027l37.594,-38.105l179.755,-0l66.006,65.548l70.136,68.419Z"
+                            ></path>
+                            <path
+                                class="mark__dot"
+                                d="M1082.986,947.544l52.456,52.456l-52.456,52.456l-52.456,-52.456l52.456,-52.456Z"
+                            ></path>
+                            <path
+                                class="mark__dot"
+                                d="M810.748,969.531l-90.277,-0l0,60.938l90.277,0l0,-60.938Z"
+                            ></path>
+                        </svg>
+                        <span class="nav__wordmark">KGroup</span>
+                    </a>
+                    <p>
+                        Diseño y desarrollo de software a la medida, plataformas
+                        SaaS, e-commerce y automatización de procesos.
+                    </p>
+                    <div
+                        class="social-pills"
+                        style="margin-top: 20px; display: flex; gap: 10px"
+                    >
+                        <a
+                            href="https://www.instagram.com/kgroup.oficial/?utm_source=ig_web_button_share_sheet"
+                            target="_blank"
+                            rel="noopener"
+                            class="social-pill"
+                            aria-label="Instagram"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                                ></path>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.tiktok.com/@kgroup.oficial"
+                            target="_blank"
+                            rel="noopener"
+                            class="social-pill"
+                            aria-label="TikTok"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-1.42V8.9a6.34 6.34 0 0 0-5.11 6.16 6.34 6.34 0 1 0 10.78-4.56 8.35 8.35 0 0 0 4.44 1.25V8.3a4.85 4.85 0 0 1-3.66-1.61z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://github.com/kgroup73"
+                            target="_blank"
+                            rel="noopener"
+                            class="social-pill"
+                            aria-label="GitHub"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <nav class="footer__col" aria-label="Servicios">
+                    <h4>Servicios</h4>
+                    <a href="#servicios">Software a la medida</a>
+                    <a href="#servicios">Plataformas SaaS</a>
+                    <a href="#servicios">E-commerce</a>
+                    <a href="#servicios">Integraciones & APIs</a>
+                    <a href="#servicios">Automatización de procesos</a>
+                </nav>
+
+                <nav class="footer__col" aria-label="Empresa">
+                    <h4>Empresa</h4>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+
+                <div class="footer__col">
+                    <h4>Contacto</h4>
+                    <span class="footer__muted"
+                        ><b>Correo:</b> kgroupmed@gmail.com</span
+                    >
+                    <span class="footer__muted"
+                        ><b>Teléfono:</b> +57 314 831 6310</span
+                    >
+                    <span class="footer__muted"
+                        ><b>Horario:</b> Todos los días · 8:00 a 20:00</span
+                    >
+                </div>
+            </div>
+
+            <div class="container footer__bottom">
+                <span
+                    >© <span id="year">2026</span> KGroup. Todos los derechos reservados.</span
+                >
+            </div>
+        </footer>
+
+        <!-- Toast Notification Flotante -->
+        <div class="toast" id="toastNotice" role="alert">
+            <div class="toast__icon">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <div class="toast__text" id="toastMessage">
+                ¡Listo! Recibimos tu solicitud, nos pondremos en contacto
+                contigo en menos de 24 horas.
+            </div>
+            <button
+                class="toast__close"
+                id="toastClose"
+                aria-label="Cerrar notificación"
+            >
+                &times;
+            </button>
+        </div>
+        <script is:inline src="/src/assets/js/main.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script
+            is:inline
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-9BT0FY3M1F"
+        ></script>
+        <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-9BT0FY3M1F");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<div class="contact__formwrap contact__formwrap--glass" id="formContainer">
+    <form class="form" id="leadForm" novalidate>
+        <div class="form__row">
+            <label class="field">
+                <span>Nombre completo *</span>
+                <input
+                    type="text"
+                    name="nombre"
+                    required
+                    placeholder="Tu nombre"
+                />
+            </label>
+            <label class="field">
+                <span>Empresa (si tienes o perteneces a una)</span>
+                <input
+                    type="text"
+                    name="empresa"
+                    placeholder="Nombre de tu empresa"
+                />
+            </label>
+        </div>
+
+        <div class="form__row">
+            <label class="field">
+                <span>Correo *</span>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="tucorreo@empresa.com"
+                />
+            </label>
+            <label class="field">
+                <span>Número de contacto</span>
+                <input
+                    type="tel"
+                    name="telefono"
+                    placeholder="+57 314 831 6310"
+                />
+            </label>
+        </div>
+
+        <label class="field">
+            <span>Cuéntanos sobre tu proyecto</span>
+            <textarea
+                name="mensaje"
+                rows="3"
+                placeholder="¿Qué problema quieres resolver?"></textarea>
+        </label>
+
+        <input
+            type="text"
+            name="website"
+            class="hp"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+        />
+
+        <button class="btn btn--primary btn--lg btn--block" type="submit">
+            Solicitar diagnóstico gratis
+            <svg viewBox="0 0 24 24" class="btn__icon" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+        </button>
+
+        <div class="form__status" id="formStatus" aria-live="polite"></div>
+    </form>
+</div>
+
+<script>
+    import { actions } from "astro:actions";
+
+    const form = document.querySelector<HTMLFormElement>("#leadForm");
+
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        const body = {
+            name: formData.get("nombre")?.toString() ?? "",
+            email: formData.get("email")?.toString() ?? "",
+            empresa: formData.get("empresa")?.toString() ?? "",
+            telefono: formData.get("telefono")?.toString() ?? "",
+            message: formData.get("mensaje")?.toString() ?? "",
+            website: formData.get("website")?.toString() ?? "",
+        };
+
+        const { data, error } = await actions.sendMail(body);
+
+        if (error) {
+            console.error(error);
+        }
+    });
+</script>

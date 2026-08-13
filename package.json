@@ -2,14 +2,17 @@
   "name": "landing-kgroup",
   "version": "1.0.0",
   "description": "Landing page de captación KGroup",
-  "main": "server.mjs",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
-    "dev": "node server.mjs",
-    "build": "node build.mjs"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/vercel": "^11.0.5",
+    "astro": "^7.2.1"
+  }
 }
